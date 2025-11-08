@@ -145,7 +145,7 @@ export default function News() {
             />
             <button
               type="submit"
-              className="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all"
+              className="btn-primary"
             >
               Subscribe
             </button>

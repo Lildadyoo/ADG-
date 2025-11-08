@@ -94,13 +94,13 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
               Share This Article
             </h3>
             <div className="flex justify-center gap-4">
-              <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all">
+              <button className="btn-primary">
                 Facebook
               </button>
-              <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all">
+              <button className="btn-primary">
                 Twitter
               </button>
-              <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all">
+              <button className="btn-primary">
                 LinkedIn
               </button>
             </div>

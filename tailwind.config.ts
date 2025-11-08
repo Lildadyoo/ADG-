@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Inter", "Work Sans", "system-ui", "sans-serif"],
+      },
       colors: {
         primary: {
           DEFAULT: "#005f86",

@@ -19,13 +19,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/get-involved"
-              className="bg-secondary hover:bg-secondary-dark text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl"
+              className="btn-primary"
             >
               Get Involved
             </Link>
             <Link
               href="/programs"
-              className="bg-white text-primary px-8 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl"
+              className="btn-secondary"
             >
               Our Programs
             </Link>
@@ -245,7 +245,7 @@ export default function Home() {
           </p>
           <Link
             href="/get-involved"
-            className="bg-white text-secondary px-8 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl inline-block"
+            className="btn-primary inline-block"
           >
             Get Involved
           </Link>

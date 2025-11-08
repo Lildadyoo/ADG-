@@ -111,11 +111,7 @@ export default function Programs() {
 
                   <Link
                     href="/get-involved"
-                    className={`inline-block text-white px-6 py-3 rounded-xl font-semibold transition-all ${
-                      program.color === "primary"
-                        ? "bg-primary hover:bg-primary-dark"
-                        : "bg-secondary hover:bg-secondary-dark"
-                    }`}
+                    className="btn-primary inline-block"
                   >
                     Get Involved
                   </Link>
@@ -181,7 +177,7 @@ export default function Programs() {
           </p>
           <Link
             href="/get-involved"
-            className="bg-white text-secondary px-8 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl inline-block"
+            className="btn-primary inline-block"
           >
             Get Involved
           </Link>

@@ -90,7 +90,7 @@ export default function GetInvolved() {
 
               <Link
                 href={option.link}
-                className="block w-full text-center bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all"
+                className="block w-full text-center btn-primary"
               >
                 {option.linkText}
               </Link>
@@ -192,7 +192,7 @@ export default function GetInvolved() {
           </p>
           <Link
             href="/contact"
-            className="bg-white text-secondary px-8 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl inline-block"
+            className="btn-primary inline-block"
           >
             Contact Us
           </Link>
