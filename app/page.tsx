@@ -1,37 +1,33 @@
 import Link from "next/link";
 import Section from "@/components/Section";
 import ProjectProposalSection from "@/components/ProjectProposalSection";
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-20 md:py-28">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Empowering Communities Through Action
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto">
-            Action for Development Group (ADG) is a Uganda-based nonprofit
-            dedicated to transforming lives through education, health, and
-            sustainable growth.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/get-involved"
-              className="btn-primary"
-            >
-              Get Involved
-            </Link>
-            <Link
-              href="/programs"
-              className="btn-secondary"
-            >
-              Our Programs
-            </Link>
-          </div>
+      <HeroSection
+        title="Empowering Communities Through Action"
+        subtitle="Action for Development Group (ADG) is a Uganda-based nonprofit dedicated to transforming lives through education, health, and sustainable growth."
+        backgroundImage="/images/hero/home-hero.jpg"
+        overlay={true}
+      >
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Link
+            href="/get-involved"
+            className="btn-primary"
+          >
+            Get Involved
+          </Link>
+          <Link
+            href="/programs"
+            className="btn-secondary"
+          >
+            Our Programs
+          </Link>
         </div>
-      </Section>
+      </HeroSection>
 
       {/* Key Programs Overview */}
       <Section className="bg-background">

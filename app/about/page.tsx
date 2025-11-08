@@ -1,18 +1,17 @@
 import Section from "@/components/Section";
+import TeamMemberImage from "@/components/TeamMemberImage";
+import HeroSection from "@/components/HeroSection";
 
 export default function About() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About ADG</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-            Empowering communities through education, health, and sustainable
-            growth in Uganda.
-          </p>
-        </div>
-      </Section>
+      <HeroSection
+        title="About ADG"
+        subtitle="Empowering communities through education, health, and sustainable growth in Uganda."
+        backgroundImage="/images/hero/about-hero.jpg"
+        overlay={true}
+      />
 
       {/* Mission & Vision */}
       <Section className="bg-background">
@@ -182,20 +181,30 @@ export default function About() {
               name: "Mpeke Isima",
               role: "Executive Director",
               bio: "Leading ADG with 10+ years of experience in community development.",
+              image: "/images/team/mpeke-isima.jpg",
             },
             {
               name: "Nanteza Salima",
               role: "Program Director",
               bio: "Oversees all program implementation and community partnerships.",
+              image: "/images/team/nanteza-salima.jpg",
             },
             {
               name: "Nanduga Mastula",
               role: "Health Coordinator",
               bio: "Manages health initiatives and community health worker programs.",
+              image: "/images/team/nanduga-mastula.jpg",
             },
           ].map((member, index) => (
             <div key={index} className="card text-center">
-              <div className="w-32 h-32 bg-accent rounded-full mx-auto mb-4"></div>
+              <div className="mx-auto mb-4 flex justify-center">
+                <TeamMemberImage
+                  src={member.image}
+                  alt={member.name}
+                  name={member.name}
+                  size={128}
+                />
+              </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 {member.name}
               </h3>
