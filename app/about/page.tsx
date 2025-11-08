@@ -179,17 +179,17 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              name: "Sarah Nakato",
+              name: "Mpeke Isima",
               role: "Executive Director",
               bio: "Leading ADG with 10+ years of experience in community development.",
             },
             {
-              name: "James Kato",
+              name: "Nanteza Salima",
               role: "Program Director",
               bio: "Oversees all program implementation and community partnerships.",
             },
             {
-              name: "Mary Namukasa",
+              name: "Nanduga Mastula",
               role: "Health Coordinator",
               bio: "Manages health initiatives and community health worker programs.",
             },
