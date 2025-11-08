@@ -2,6 +2,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import ProjectProposalSection from "@/components/ProjectProposalSection";
 import HeroSection from "@/components/HeroSection";
+import NewsCard from "@/components/NewsCard";
 
 export default function Home() {
   return (
@@ -195,24 +196,36 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="card">
-              <div className="h-48 bg-accent rounded-lg mb-4"></div>
-              <div className="text-sm text-gray-500 mb-2">March 15, 2024</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Community Health Initiative Launch
-              </h3>
-              <p className="text-gray-600 mb-4">
-                We're excited to announce the launch of our new community health
-                program...
-              </p>
-              <Link
-                href="/news/article-1"
-                className="text-primary hover:text-primary-dark font-semibold"
-              >
-                Read More →
-              </Link>
-            </div>
+          {[
+            {
+              id: 1,
+              title: "Community Health Initiative Launch",
+              date: "March 15, 2024",
+              category: "Health",
+              excerpt:
+                "We're excited to announce the launch of our new community health program targeting maternal and child health in rural areas.",
+              image: "/images/news/news-1.jpg",
+            },
+            {
+              id: 2,
+              title: "Education Program Reaches 5,000 Students",
+              date: "February 28, 2024",
+              category: "Education",
+              excerpt:
+                "Our education programs have now reached over 5,000 students across 30 schools, marking a significant milestone.",
+              image: "/images/news/news-2.jpg",
+            },
+            {
+              id: 3,
+              title: "Sustainable Growth Project Expansion",
+              date: "February 10, 2024",
+              category: "Sustainable Growth",
+              excerpt:
+                "ADG announces the expansion of sustainable growth projects to five new communities, focusing on agriculture.",
+              image: "/images/news/news-3.jpg",
+            },
+          ].map((article) => (
+            <NewsCard key={article.id} {...article} />
           ))}
         </div>
 

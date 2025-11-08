@@ -1,5 +1,6 @@
 import Section from "@/components/Section";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 // This would typically come from a CMS or API
@@ -9,6 +10,7 @@ const newsArticles: Record<string, any> = {
     title: "Community Health Initiative Launch",
     date: "March 15, 2024",
     category: "Health",
+    image: "/images/news/news-1.jpg",
     content: `
       <p>We're excited to announce the launch of our new community health program targeting maternal and child health in rural areas of Uganda.</p>
       
@@ -31,6 +33,7 @@ const newsArticles: Record<string, any> = {
     title: "Education Program Reaches 5,000 Students",
     date: "February 28, 2024",
     category: "Education",
+    image: "/images/news/news-2.jpg",
     content: `
       <p>Our education programs have now reached over 5,000 students across 30 schools, marking a significant milestone in our mission to provide quality education to underserved communities.</p>
       
@@ -81,7 +84,24 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
       <Section className="bg-background">
         <div className="max-w-4xl mx-auto">
           <div className="card">
-            <div className="h-96 bg-accent rounded-xl mb-8"></div>
+            {article.image && (
+              <div className="h-96 relative rounded-xl mb-8 overflow-hidden">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = "none";
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.className = "h-96 bg-accent rounded-xl mb-8";
+                    }
+                  }}
+                />
+              </div>
+            )}
             <div
               className="prose prose-lg max-w-none"
               dangerouslySetInnerHTML={{ __html: article.content }}
@@ -113,7 +133,7 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.values(newsArticles)
-                .filter((a) => a.id !== article.id)
+                .filter((a: any) => a.id !== article.id)
                 .slice(0, 2)
                 .map((relatedArticle: any) => (
                   <Link
@@ -121,7 +141,24 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
                     href={`/news/${relatedArticle.id}`}
                     className="card hover:scale-105 transition-transform"
                   >
-                    <div className="h-40 bg-accent rounded-lg mb-4"></div>
+                    {relatedArticle.image && (
+                      <div className="h-40 relative rounded-lg mb-4 overflow-hidden">
+                        <Image
+                          src={relatedArticle.image}
+                          alt={relatedArticle.title}
+                          fill
+                          className="object-cover"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            target.style.display = "none";
+                            const parent = target.parentElement;
+                            if (parent) {
+                              parent.className = "h-40 bg-accent rounded-lg mb-4";
+                            }
+                          }}
+                        />
+                      </div>
+                    )}
                     <div className="text-sm text-secondary font-semibold mb-2">
                       {relatedArticle.category} • {relatedArticle.date}
                     </div>
