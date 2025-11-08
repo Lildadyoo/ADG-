@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Section from "@/components/Section";
+import ProjectProposalSection from "@/components/ProjectProposalSection";
 
 export default function Home() {
   return (
@@ -228,6 +229,9 @@ export default function Home() {
           </Link>
         </div>
       </Section>
+
+      {/* Project Proposal Section */}
+      <ProjectProposalSection />
 
       {/* Call to Action */}
       <Section className="bg-secondary text-white">
