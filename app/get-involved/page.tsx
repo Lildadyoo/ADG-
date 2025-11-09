@@ -1,6 +1,7 @@
 import Section from "@/components/Section";
 import HeroSection from "@/components/HeroSection";
 import InvolvementImage from "@/components/InvolvementImage";
+import TeamMemberImage from "@/components/TeamMemberImage";
 import Link from "next/link";
 
 export default function GetInvolved() {
@@ -128,7 +129,12 @@ export default function GetInvolved() {
               the communities we serve is incredibly fulfilling."
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-accent rounded-full"></div>
+              <TeamMemberImage
+                src="/images/volunteers/john-mukasa.jpg"
+                alt="John Mukasa"
+                name="John Mukasa"
+                size={48}
+              />
               <div>
                 <div className="font-semibold text-gray-900">John Mukasa</div>
                 <div className="text-sm text-gray-600">Education Volunteer</div>
@@ -143,7 +149,12 @@ export default function GetInvolved() {
               dedication of the team is remarkable."
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-accent rounded-full"></div>
+              <TeamMemberImage
+                src="/images/volunteers/sarah-nakamya.jpg"
+                alt="Sarah Nakamya"
+                name="Sarah Nakamya"
+                size={48}
+              />
               <div>
                 <div className="font-semibold text-gray-900">Sarah Nakamya</div>
                 <div className="text-sm text-gray-600">Donor & Partner</div>
