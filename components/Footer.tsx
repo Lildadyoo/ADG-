@@ -68,6 +68,10 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-primary-light pt-8 text-center text-gray-300">
           <p>&copy; {new Date().getFullYear()} Action for Development Group. All rights reserved.</p>
+          <p className="mt-4 text-sm">
+            Built with <span className="text-red-400">♥</span> by{" "}
+            <span className="font-semibold text-white">Dev Gada</span>
+          </p>
         </div>
       </div>
     </footer>
