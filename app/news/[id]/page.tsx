@@ -2,11 +2,21 @@ import Section from "@/components/Section";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import type { NewsArticle } from "@/app/api/news/route";
 
-// Force dynamic rendering to prevent static generation timeout
+// Force dynamic rendering to prevent static generation timeout on Vercel
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+// NewsArticle interface
+interface NewsArticle {
+  id: number;
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  image: string;
+  content?: string;
+}
 
 // Fetch news article from API at request time
 async function getNewsArticle(id: string): Promise<NewsArticle | null> {
@@ -38,11 +48,18 @@ async function getNewsArticle(id: string): Promise<NewsArticle | null> {
 // Fetch all news articles for related articles section
 async function getAllNewsArticles(): Promise<NewsArticle[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const response = await fetch(`${baseUrl}/api/news`, {
-      cache: "no-store",
+    // For server-side rendering, construct the full URL
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const host = process.env.VERCEL_URL 
+      ? process.env.VERCEL_URL 
+      : process.env.NEXT_PUBLIC_BASE_URL?.replace(/^https?:\/\//, '') || 'localhost:3000';
+    
+    const apiUrl = `${protocol}://${host}/api/news`;
+    
+    const response = await fetch(apiUrl, {
+      cache: 'no-store', // CRITICAL: Always fetch fresh data at request time - prevents static generation
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -112,10 +129,12 @@ export default async function NewsArticle({
                 />
               </div>
             )}
-            <div
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-            />
+            {article.content && (
+              <div
+                className="prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+              />
+            )}
           </div>
 
           {/* Share Section */}

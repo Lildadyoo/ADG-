@@ -1,21 +1,53 @@
 import Section from "@/components/Section";
 import NewsCard from "@/components/NewsCard";
 import NewsletterSignup from "@/components/NewsletterSignup";
-import type { NewsArticle } from "@/app/api/news/route";
 
 // Force dynamic rendering to prevent static generation timeout on Vercel
+// This MUST be exported before the component
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-// Fetch news articles from API at request time
+// NewsArticle interface
+export interface NewsArticle {
+  id: number;
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  image: string;
+  content?: string;
+}
+
+// Fetch news articles at request time
+// Replace this with your actual API endpoint
 async function getNewsArticles(): Promise<NewsArticle[]> {
   try {
-    // In development, use localhost. In production, this will use the same domain
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const response = await fetch(`${baseUrl}/api/news`, {
-      cache: "no-store", // Always fetch fresh data
+    // Option 1: Call external API directly (recommended for production)
+    // Uncomment and configure when you have an external API:
+    // const apiUrl = process.env.NEWS_API_URL || 'https://your-api.com/api/news';
+    // const response = await fetch(apiUrl, {
+    //   cache: 'no-store', // Always fetch fresh data at request time
+    //   headers: {
+    //     'Authorization': `Bearer ${process.env.API_TOKEN}`,
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
+    // if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
+    // return await response.json();
+    
+    // Option 2: Call internal API route (current setup)
+    // For server-side rendering, we need to construct the full URL
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const host = process.env.VERCEL_URL 
+      ? process.env.VERCEL_URL 
+      : process.env.NEXT_PUBLIC_BASE_URL?.replace(/^https?:\/\//, '') || 'localhost:3000';
+    
+    const apiUrl = `${protocol}://${host}/api/news`;
+    
+    const response = await fetch(apiUrl, {
+      cache: 'no-store', // CRITICAL: Always fetch fresh data at request time - prevents static generation
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -27,7 +59,7 @@ async function getNewsArticles(): Promise<NewsArticle[]> {
     return data.articles || [];
   } catch (error) {
     console.error("Error fetching news articles:", error);
-    // Return empty array on error - you could also return a default/fallback set
+    // Return empty array on error - prevents page crash
     return [];
   }
 }
