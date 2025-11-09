@@ -1,5 +1,6 @@
 import Section from "@/components/Section";
 import HeroSection from "@/components/HeroSection";
+import InvolvementImage from "@/components/InvolvementImage";
 import Link from "next/link";
 
 export default function GetInvolved() {
@@ -18,6 +19,7 @@ export default function GetInvolved() {
       ],
       link: "/contact",
       linkText: "Contact Us to Volunteer",
+      image: "/images/get-involved/volunteer.jpg",
     },
     {
       title: "Donate",
@@ -33,6 +35,7 @@ export default function GetInvolved() {
       ],
       link: "/contact",
       linkText: "Make a Donation",
+      image: "/images/get-involved/donate.jpg",
     },
     {
       title: "Partner",
@@ -48,6 +51,7 @@ export default function GetInvolved() {
       ],
       link: "/contact",
       linkText: "Become a Partner",
+      image: null, // No image for Partner section
     },
   ];
 
@@ -65,33 +69,41 @@ export default function GetInvolved() {
       <Section className="bg-background">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {involvementOptions.map((option, index) => (
-            <div key={index} className="card">
-              <div className="text-5xl mb-4">{option.icon}</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {option.title}
-              </h2>
-              <p className="text-gray-600 mb-6">{option.description}</p>
+            <div key={index} className="card p-0 overflow-hidden">
+              {/* Image Section */}
+              {option.image && (
+                <InvolvementImage src={option.image} alt={option.title} />
+              )}
+              
+              {/* Content Section */}
+              <div className="p-6">
+                <div className="text-5xl mb-4">{option.icon}</div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  {option.title}
+                </h2>
+                <p className="text-gray-600 mb-6">{option.description}</p>
 
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Opportunities:
-                </h3>
-                <ul className="space-y-2">
-                  {option.opportunities.map((opp, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-secondary mt-1">•</span>
-                      <span className="text-gray-600 text-sm">{opp}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    Opportunities:
+                  </h3>
+                  <ul className="space-y-2">
+                    {option.opportunities.map((opp, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-secondary mt-1">•</span>
+                        <span className="text-gray-600 text-sm">{opp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <Link
+                  href={option.link}
+                  className="block w-full text-center btn-primary"
+                >
+                  {option.linkText}
+                </Link>
               </div>
-
-              <Link
-                href={option.link}
-                className="block w-full text-center btn-primary"
-              >
-                {option.linkText}
-              </Link>
             </div>
           ))}
         </div>
