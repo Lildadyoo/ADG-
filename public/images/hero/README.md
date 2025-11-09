@@ -19,6 +19,12 @@ Place hero section background images in this directory.
 - Recommended: Use images with darker areas where text will appear, or ensure the overlay is sufficient
 - Optimize images before uploading (use tools like TinyPNG or ImageOptim)
 
+## Current Hero Images
+
+- `home-hero.jpg` - For the Home page
+- `about-hero.jpg` - For the About page
+- `gallery-hero.jpg` - For the Gallery page
+
 ## Usage
 
 The HeroSection component automatically adds:
@@ -34,7 +40,9 @@ public/
     hero/
       about-hero.jpg
       home-hero.jpg
-      programs-hero.jpg
+      gallery-hero.jpg
+      programs-hero.jpg (optional)
+      contact-hero.jpg (optional)
 ```
 
 ## Adding Hero Images to Pages

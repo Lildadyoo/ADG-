@@ -4,6 +4,7 @@ import Section from "@/components/Section";
 import GalleryImage from "@/components/GalleryImage";
 import ImageLightbox from "@/components/ImageLightbox";
 import StoryCard from "@/components/StoryCard";
+import HeroSection from "@/components/HeroSection";
 import { useState } from "react";
 
 export default function Gallery() {
@@ -147,15 +148,12 @@ export default function Gallery() {
       )}
 
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Gallery</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-            A visual journey through our programs, events, and the communities
-            we serve.
-          </p>
-        </div>
-      </Section>
+      <HeroSection
+        title="Gallery"
+        subtitle="A visual journey through our programs, events, and the communities we serve."
+        backgroundImage="/images/hero/gallery-hero.jpg"
+        overlay={true}
+      />
 
       {/* Category Filter */}
       <Section className="bg-background">
