@@ -3,6 +3,7 @@
 import Section from "@/components/Section";
 import GalleryImage from "@/components/GalleryImage";
 import ImageLightbox from "@/components/ImageLightbox";
+import StoryCard from "@/components/StoryCard";
 import { useState } from "react";
 
 export default function Gallery() {
@@ -99,9 +100,40 @@ export default function Gallery() {
       ? images
       : images.filter((img) => img.category === selectedCategory);
 
+  // Stories in Motion section - Featured video/image content
+  const stories = [
+    {
+      id: "story-1",
+      title: "Education Program Impact",
+      description:
+        "See how our education programs are transforming lives in rural communities.",
+      image: "/images/gallery/stories-education.jpg",
+      videoUrl: null, // Add YouTube/Vimeo URL if you have a video (e.g., "https://www.youtube.com/watch?v=...")
+    },
+    {
+      id: "story-2",
+      title: "Community Health Initiative",
+      description:
+        "Learn about our health programs and their impact on community wellness.",
+      image: "/images/gallery/stories-health.jpg",
+      videoUrl: null, // Add YouTube/Vimeo URL if you have a video (e.g., "https://www.youtube.com/watch?v=...")
+    },
+  ];
+
+  // Combine all images (gallery + stories) for lightbox support
+  const allImagesForLightbox = [
+    ...images,
+    ...stories.map((story, index) => ({
+      id: 1000 + index + 1,
+      title: story.title,
+      category: "story",
+      image: story.image,
+    })),
+  ];
+
   const selectedImageData =
     selectedImage !== null
-      ? images.find((img) => img.id === selectedImage)
+      ? allImagesForLightbox.find((img) => img.id === selectedImage)
       : null;
 
   return (
@@ -166,7 +198,7 @@ export default function Gallery() {
         )}
       </Section>
 
-      {/* Video Section (Optional) */}
+      {/* Stories in Motion Section */}
       <Section className="bg-white">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -178,31 +210,25 @@ export default function Gallery() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="card p-0 overflow-hidden">
-            <div className="h-64 bg-accent"></div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Education Program Impact
-              </h3>
-              <p className="text-gray-600">
-                See how our education programs are transforming lives in rural
-                communities.
-              </p>
-            </div>
-          </div>
-
-          <div className="card p-0 overflow-hidden">
-            <div className="h-64 bg-accent"></div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Community Health Initiative
-              </h3>
-              <p className="text-gray-600">
-                Learn about our health programs and their impact on community
-                wellness.
-              </p>
-            </div>
-          </div>
+          {stories.map((story) => (
+            <StoryCard
+              key={story.id}
+              title={story.title}
+              description={story.description}
+              image={story.image}
+              videoUrl={story.videoUrl}
+              onClick={() => {
+                if (story.videoUrl) {
+                  // Open video in new tab
+                  window.open(story.videoUrl, "_blank");
+                } else {
+                  // If no video URL, open image in lightbox
+                  const storyImageId = 1000 + parseInt(story.id.split("-")[1]);
+                  setSelectedImage(storyImageId);
+                }
+              }}
+            />
+          ))}
         </div>
       </Section>
     </div>

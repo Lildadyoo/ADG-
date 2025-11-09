@@ -46,6 +46,10 @@ The following images are expected in the gallery:
 - `community-1.jpg` - Community Meeting
 - `community-2.jpg` - Community Celebration
 
+### Stories in Motion Section
+- `stories-education.jpg` - Education Program Impact (for Stories in Motion section)
+- `stories-health.jpg` - Community Health Initiative (for Stories in Motion section)
+
 ## Usage
 
 Images are automatically displayed in:
@@ -65,6 +69,31 @@ Images are automatically displayed in:
      image: "/images/gallery/education-4.jpg",
    }
    ```
+
+## Adding Images to Stories in Motion Section
+
+1. Add the image file to this directory (e.g., `stories-education.jpg`, `stories-health.jpg`)
+2. Update the `stories` array in `app/gallery/page.tsx`:
+   ```typescript
+   {
+     id: "story-3",
+     title: "Your Story Title",
+     description: "Your story description",
+     image: "/images/gallery/stories-your-story.jpg",
+     videoUrl: null, // Or add YouTube/Vimeo URL: "https://www.youtube.com/watch?v=..."
+   }
+   ```
+
+### Adding Video Links
+
+To add a video link to a story:
+1. Get the YouTube or Vimeo video URL
+2. Update the `videoUrl` field in the story object:
+   ```typescript
+   videoUrl: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
+   ```
+3. When clicked, the video will open in a new tab
+4. If no video URL is provided, clicking the image will open it in the lightbox
 
 ## Features
 
@@ -92,5 +121,7 @@ public/
       events-2.jpg
       community-1.jpg
       community-2.jpg
+      stories-education.jpg
+      stories-health.jpg
 ```
 
