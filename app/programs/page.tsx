@@ -77,7 +77,7 @@ export default function Programs() {
               id={program.id}
               className={`flex flex-col ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } items-center gap-8`}
+              } items-stretch md:items-center gap-8`}
             >
               <div className="flex-1">
                 <div className="card">
@@ -120,7 +120,7 @@ export default function Programs() {
                 </div>
               </div>
 
-              <div className="flex-1">
+              <div className="flex-1 w-full">
                 <ProgramImage
                   src={program.image}
                   alt={program.title}

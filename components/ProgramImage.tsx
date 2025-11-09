@@ -31,7 +31,7 @@ export default function ProgramImage({
 
   return (
     <div
-      className={`h-64 md:h-96 relative rounded-xl overflow-hidden bg-accent ${className}`}
+      className={`h-64 md:h-96 w-full relative rounded-xl overflow-hidden bg-accent ${className}`}
     >
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-accent">
@@ -45,6 +45,7 @@ export default function ProgramImage({
         className="object-cover"
         onError={() => setImageError(true)}
         onLoad={() => setIsLoading(false)}
+        sizes="(max-width: 768px) 100vw, 50vw"
       />
     </div>
   );
