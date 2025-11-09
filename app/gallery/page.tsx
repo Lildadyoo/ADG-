@@ -1,10 +1,13 @@
 "use client";
 
 import Section from "@/components/Section";
+import GalleryImage from "@/components/GalleryImage";
+import ImageLightbox from "@/components/ImageLightbox";
 import { useState } from "react";
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const categories = [
     { id: "all", label: "All" },
@@ -15,20 +18,80 @@ export default function Gallery() {
     { id: "community", label: "Community" },
   ];
 
-  // Placeholder images - in a real app, these would come from a CMS or API
+  // Gallery images - Add your images to public/images/gallery/ directory
   const images = [
-    { id: 1, category: "education", title: "School Program Launch" },
-    { id: 2, category: "health", title: "Community Health Clinic" },
-    { id: 3, category: "sustainable", title: "Agriculture Training" },
-    { id: 4, category: "events", title: "Annual Community Gathering" },
-    { id: 5, category: "community", title: "Community Meeting" },
-    { id: 6, category: "education", title: "Student Learning" },
-    { id: 7, category: "health", title: "Health Workshop" },
-    { id: 8, category: "sustainable", title: "Renewable Energy Project" },
-    { id: 9, category: "events", title: "Volunteer Recognition" },
-    { id: 10, category: "community", title: "Community Celebration" },
-    { id: 11, category: "education", title: "Teacher Training" },
-    { id: 12, category: "health", title: "Health Screening" },
+    {
+      id: 1,
+      category: "education",
+      title: "School Program Launch",
+      image: "/images/gallery/education-1.jpg",
+    },
+    {
+      id: 2,
+      category: "health",
+      title: "Community Health Clinic",
+      image: "/images/gallery/health-1.jpg",
+    },
+    {
+      id: 3,
+      category: "sustainable",
+      title: "Agriculture Training",
+      image: "/images/gallery/sustainable-1.jpg",
+    },
+    {
+      id: 4,
+      category: "events",
+      title: "Annual Community Gathering",
+      image: "/images/gallery/events-1.jpg",
+    },
+    {
+      id: 5,
+      category: "community",
+      title: "Community Meeting",
+      image: "/images/gallery/community-1.jpg",
+    },
+    {
+      id: 6,
+      category: "education",
+      title: "Student Learning",
+      image: "/images/gallery/education-2.jpg",
+    },
+    {
+      id: 7,
+      category: "health",
+      title: "Health Workshop",
+      image: "/images/gallery/health-2.jpg",
+    },
+    {
+      id: 8,
+      category: "sustainable",
+      title: "Renewable Energy Project",
+      image: "/images/gallery/sustainable-2.jpg",
+    },
+    {
+      id: 9,
+      category: "events",
+      title: "Volunteer Recognition",
+      image: "/images/gallery/events-2.jpg",
+    },
+    {
+      id: 10,
+      category: "community",
+      title: "Community Celebration",
+      image: "/images/gallery/community-2.jpg",
+    },
+    {
+      id: 11,
+      category: "education",
+      title: "Teacher Training",
+      image: "/images/gallery/education-3.jpg",
+    },
+    {
+      id: 12,
+      category: "health",
+      title: "Health Screening",
+      image: "/images/gallery/health-3.jpg",
+    },
   ];
 
   const filteredImages =
@@ -36,8 +99,21 @@ export default function Gallery() {
       ? images
       : images.filter((img) => img.category === selectedCategory);
 
+  const selectedImageData =
+    selectedImage !== null
+      ? images.find((img) => img.id === selectedImage)
+      : null;
+
   return (
     <div>
+      {/* Image Lightbox */}
+      {selectedImageData && (
+        <ImageLightbox
+          image={selectedImageData}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
+
       {/* Hero Section */}
       <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="text-center py-16 md:py-20">
@@ -70,20 +146,14 @@ export default function Gallery() {
         {/* Image Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredImages.map((image) => (
-            <div
+            <GalleryImage
               key={image.id}
-              className="card p-0 overflow-hidden group cursor-pointer"
-            >
-              <div className="h-64 bg-accent relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  <h3 className="font-semibold">{image.title}</h3>
-                  <p className="text-sm text-gray-200 capitalize">
-                    {image.category}
-                  </p>
-                </div>
-              </div>
-            </div>
+              src={image.image}
+              alt={image.title}
+              title={image.title}
+              category={image.category}
+              onClick={() => setSelectedImage(image.id)}
+            />
           ))}
         </div>
 
