@@ -51,7 +51,7 @@ export default function GetInvolved() {
       ],
       link: "/contact",
       linkText: "Become a Partner",
-      image: null, // No image for Partner section
+      image: "/images/get-involved/partner.jpg",
     },
   ];
 

@@ -9,12 +9,14 @@ Place images for the Get Involved page in this directory.
 - **File Naming**: Use descriptive names matching the involvement options:
   - `volunteer.jpg` - For Volunteer section
   - `donate.jpg` - For Donor/Donate section
+  - `partner.jpg` - For Partner section
 
 ## Image Guidelines
 
 - Use high-quality images that represent each involvement option
 - **Volunteer image**: Should show volunteers in action (e.g., working with communities, teaching, helping)
 - **Donate image**: Should show the impact of donations (e.g., happy beneficiaries, program activities, community development)
+- **Partner image**: Should show partnership activities (e.g., partnership meetings, collaborative projects, joint initiatives, handshakes, corporate/NGO collaborations)
 - Ensure images are visually appealing and relevant to the content
 - Optimize images before uploading (use tools like TinyPNG or ImageOptim)
 - Keep file sizes under 300KB for optimal loading speed
@@ -32,6 +34,7 @@ The InvolvementImage component automatically:
 
 - `volunteer.jpg` - Volunteer section (required)
 - `donate.jpg` - Donate/Donor section (required)
+- `partner.jpg` - Partner section (required)
 
 ## Example Structure
 
@@ -41,6 +44,7 @@ public/
     get-involved/
       volunteer.jpg
       donate.jpg
+      partner.jpg
 ```
 
 ## Adding Images
@@ -74,9 +78,18 @@ If an image is missing or fails to load, the component will:
 - Educational or health programs supported by donations
 - Impact visualization (before/after, progress)
 
+### Partner Image
+- Partnership meetings and collaborations
+- Handshakes between partners
+- Corporate or NGO partnership events
+- Joint initiatives and projects
+- Collaborative community work
+- Partnership signing ceremonies
+- Diverse groups working together
+
 ## Tips
 
-- **Consistent styling**: Use similar lighting and composition for both images
+- **Consistent styling**: Use similar lighting and composition for all images
 - **Relevant content**: Choose images that clearly represent each involvement option
 - **File size**: Keep images under 300KB for optimal loading speed
 - **Alt text**: The component uses the section title as alt text for accessibility
