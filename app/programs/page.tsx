@@ -1,5 +1,6 @@
 import Section from "@/components/Section";
 import HeroSection from "@/components/HeroSection";
+import ProgramImage from "@/components/ProgramImage";
 import Link from "next/link";
 
 export default function Programs() {
@@ -19,6 +20,7 @@ export default function Programs() {
       ],
       impact: "5,000+ students reached, 50+ schools supported",
       color: "primary",
+      image: "/images/programs/education.jpg",
     },
     {
       id: "health",
@@ -35,6 +37,7 @@ export default function Programs() {
       ],
       impact: "8,000+ people served, 30+ health facilities supported",
       color: "secondary",
+      image: "/images/programs/health.jpg",
     },
     {
       id: "sustainable-growth",
@@ -51,6 +54,7 @@ export default function Programs() {
       ],
       impact: "3,000+ entrepreneurs supported, 20+ sustainable projects",
       color: "secondary",
+      image: "/images/programs/sustainable-growth.jpg",
     },
   ];
 
@@ -117,7 +121,10 @@ export default function Programs() {
               </div>
 
               <div className="flex-1">
-                <div className="h-64 md:h-96 bg-accent rounded-xl"></div>
+                <ProgramImage
+                  src={program.image}
+                  alt={program.title}
+                />
               </div>
             </div>
           ))}
