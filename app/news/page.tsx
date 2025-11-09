@@ -21,6 +21,12 @@ export interface NewsArticle {
 // Fetch news articles at request time
 // Replace this with your actual API endpoint
 async function getNewsArticles(): Promise<NewsArticle[]> {
+  // CRITICAL: Prevent any data fetching during build phase
+  // This ensures the page is never statically generated
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return [];
+  }
+
   try {
     // Option 1: Call external API directly (recommended for production)
     // Uncomment and configure when you have an external API:

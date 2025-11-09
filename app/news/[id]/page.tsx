@@ -20,13 +20,25 @@ interface NewsArticle {
 
 // Fetch news article from API at request time
 async function getNewsArticle(id: string): Promise<NewsArticle | null> {
+  // CRITICAL: Prevent any data fetching during build phase
+  // This ensures the page is never statically generated
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return null;
+  }
+
   try {
-    // In development, use localhost. In production, this will use the same domain
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const response = await fetch(`${baseUrl}/api/news/${id}`, {
-      cache: "no-store", // Always fetch fresh data
+    // For server-side rendering, construct the full URL
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const host = process.env.VERCEL_URL 
+      ? process.env.VERCEL_URL 
+      : process.env.NEXT_PUBLIC_BASE_URL?.replace(/^https?:\/\//, '') || 'localhost:3000';
+    
+    const apiUrl = `${protocol}://${host}/api/news/${id}`;
+    
+    const response = await fetch(apiUrl, {
+      cache: 'no-store', // CRITICAL: Always fetch fresh data at request time - prevents static generation
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -47,6 +59,12 @@ async function getNewsArticle(id: string): Promise<NewsArticle | null> {
 
 // Fetch all news articles for related articles section
 async function getAllNewsArticles(): Promise<NewsArticle[]> {
+  // CRITICAL: Prevent any data fetching during build phase
+  // This ensures the page is never statically generated
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return [];
+  }
+
   try {
     // For server-side rendering, construct the full URL
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
