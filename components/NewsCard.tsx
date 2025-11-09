@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 interface NewsCardProps {
   id: number;
@@ -22,26 +25,26 @@ export default function NewsCard({
   featured = false,
   className = "",
 }: NewsCardProps) {
+  const [imageError, setImageError] = useState(false);
+
   if (featured) {
     return (
       <div className={`card p-0 overflow-hidden ${className}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div className="h-64 md:h-full relative">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover"
-              onError={(e) => {
-                // Fallback to placeholder if image doesn't exist
-                const target = e.currentTarget;
-                target.style.display = "none";
-                const parent = target.parentElement;
-                if (parent) {
-                  parent.className = "h-64 md:h-full bg-accent";
-                }
-              }}
-            />
+          <div className="h-64 md:h-full relative bg-accent">
+            {!imageError ? (
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className="object-cover"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-gray-400 text-2xl">No Image</span>
+              </div>
+            )}
           </div>
           <div className="p-8">
             <div className="text-sm text-secondary font-semibold mb-2">
@@ -66,22 +69,20 @@ export default function NewsCard({
       href={`/news/${id}`}
       className={`card hover:scale-105 transition-transform block ${className}`}
     >
-      <div className="h-48 relative rounded-lg mb-4 overflow-hidden">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover"
-          onError={(e) => {
-            // Fallback to placeholder if image doesn't exist
-            const target = e.currentTarget;
-            target.style.display = "none";
-            const parent = target.parentElement;
-            if (parent) {
-              parent.className = "h-48 bg-accent rounded-lg mb-4";
-            }
-          }}
-        />
+      <div className="h-48 relative rounded-lg mb-4 overflow-hidden bg-accent">
+        {!imageError ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-gray-400">No Image</span>
+          </div>
+        )}
       </div>
       <div className="text-sm text-secondary font-semibold mb-2">
         {category} • {date}

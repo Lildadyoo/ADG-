@@ -2,63 +2,81 @@ import Section from "@/components/Section";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import type { NewsArticle } from "@/app/api/news/route";
 
-// This would typically come from a CMS or API
-const newsArticles: Record<string, any> = {
-  "1": {
-    id: 1,
-    title: "Community Health Initiative Launch",
-    date: "March 15, 2024",
-    category: "Health",
-    image: "/images/news/news-1.jpg",
-    content: `
-      <p>We're excited to announce the launch of our new community health program targeting maternal and child health in rural areas of Uganda.</p>
-      
-      <p>This initiative represents a significant step forward in our mission to improve healthcare access in underserved communities. The program will focus on:</p>
-      
-      <ul>
-        <li>Maternal health services and prenatal care</li>
-        <li>Child immunization programs</li>
-        <li>Health education workshops</li>
-        <li>Community health worker training</li>
-      </ul>
-      
-      <p>Over the next six months, we aim to reach over 2,000 women and children across 10 communities. This program is made possible through partnerships with local health facilities and the support of our donors and volunteers.</p>
-      
-      <p>We're grateful for the community support and look forward to sharing updates on the program's progress and impact.</p>
-    `,
-  },
-  "2": {
-    id: 2,
-    title: "Education Program Reaches 5,000 Students",
-    date: "February 28, 2024",
-    category: "Education",
-    image: "/images/news/news-2.jpg",
-    content: `
-      <p>Our education programs have now reached over 5,000 students across 30 schools, marking a significant milestone in our mission to provide quality education to underserved communities.</p>
-      
-      <p>This achievement reflects the hard work of our team, volunteers, and partners who have been dedicated to expanding educational opportunities throughout Uganda.</p>
-      
-      <p>Key highlights of our education programs include:</p>
-      
-      <ul>
-        <li>School infrastructure improvements</li>
-        <li>Teacher training and professional development</li>
-        <li>Scholarship programs for students</li>
-        <li>Digital skills training</li>
-      </ul>
-      
-      <p>We remain committed to our goal of ensuring every child has access to quality education, and we're excited to continue expanding our programs in the coming year.</p>
-    `,
-  },
-};
+// Force dynamic rendering to prevent static generation timeout
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export default function NewsArticle({ params }: { params: { id: string } }) {
-  const article = newsArticles[params.id];
+// Fetch news article from API at request time
+async function getNewsArticle(id: string): Promise<NewsArticle | null> {
+  try {
+    // In development, use localhost. In production, this will use the same domain
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const response = await fetch(`${baseUrl}/api/news/${id}`, {
+      cache: "no-store", // Always fetch fresh data
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return null;
+      }
+      throw new Error(`Failed to fetch article: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.article || null;
+  } catch (error) {
+    console.error("Error fetching news article:", error);
+    return null;
+  }
+}
+
+// Fetch all news articles for related articles section
+async function getAllNewsArticles(): Promise<NewsArticle[]> {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const response = await fetch(`${baseUrl}/api/news`, {
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const data = await response.json();
+    return data.articles || [];
+  } catch (error) {
+    console.error("Error fetching all news articles:", error);
+    return [];
+  }
+}
+
+export default async function NewsArticle({
+  params,
+}: {
+  params: { id: string };
+}) {
+  // Fetch data at request time (server-side)
+  const [article, allArticles] = await Promise.all([
+    getNewsArticle(params.id),
+    getAllNewsArticles(),
+  ]);
 
   if (!article) {
     notFound();
   }
+
+  // Get related articles (exclude current article)
+  const relatedArticles = allArticles
+    .filter((a) => a.id !== article.id)
+    .slice(0, 2);
 
   return (
     <div>
@@ -85,20 +103,12 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
         <div className="max-w-4xl mx-auto">
           <div className="card">
             {article.image && (
-              <div className="h-96 relative rounded-xl mb-8 overflow-hidden">
+              <div className="h-96 relative rounded-xl mb-8 overflow-hidden bg-accent">
                 <Image
                   src={article.image}
                   alt={article.title}
                   fill
                   className="object-cover"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = "none";
-                    const parent = target.parentElement;
-                    if (parent) {
-                      parent.className = "h-96 bg-accent rounded-xl mb-8";
-                    }
-                  }}
                 />
               </div>
             )}
@@ -132,30 +142,20 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
               Related Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {Object.values(newsArticles)
-                .filter((a: any) => a.id !== article.id)
-                .slice(0, 2)
-                .map((relatedArticle: any) => (
+              {relatedArticles.length > 0 ? (
+                relatedArticles.map((relatedArticle) => (
                   <Link
                     key={relatedArticle.id}
                     href={`/news/${relatedArticle.id}`}
                     className="card hover:scale-105 transition-transform"
                   >
                     {relatedArticle.image && (
-                      <div className="h-40 relative rounded-lg mb-4 overflow-hidden">
+                      <div className="h-40 relative rounded-lg mb-4 overflow-hidden bg-accent">
                         <Image
                           src={relatedArticle.image}
                           alt={relatedArticle.title}
                           fill
                           className="object-cover"
-                          onError={(e) => {
-                            const target = e.currentTarget;
-                            target.style.display = "none";
-                            const parent = target.parentElement;
-                            if (parent) {
-                              parent.className = "h-40 bg-accent rounded-lg mb-4";
-                            }
-                          }}
                         />
                       </div>
                     )}
@@ -166,7 +166,12 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
                       {relatedArticle.title}
                     </h3>
                   </Link>
-                ))}
+                ))
+              ) : (
+                <p className="text-gray-600 col-span-2 text-center py-4">
+                  No related articles available.
+                </p>
+              )}
             </div>
           </div>
         </div>
