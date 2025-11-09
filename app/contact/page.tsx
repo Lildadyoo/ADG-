@@ -1,6 +1,7 @@
 "use client";
 
 import Section from "@/components/Section";
+import HeroSection from "@/components/HeroSection";
 import { useState } from "react";
 
 export default function Contact() {
@@ -36,15 +37,12 @@ export default function Contact() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-            Get in touch with us. We'd love to hear from you and answer any
-            questions you may have.
-          </p>
-        </div>
-      </Section>
+      <HeroSection
+        title="Contact Us"
+        subtitle="Get in touch with us. We'd love to hear from you and answer any questions you may have."
+        backgroundImage="/images/hero/contact-hero.jpg"
+        overlay={true}
+      />
 
       {/* Contact Information and Form */}
       <Section className="bg-background">

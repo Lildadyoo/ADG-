@@ -7,10 +7,13 @@ Place hero section background images in this directory.
 - **Format**: JPG or PNG (JPG recommended for smaller file sizes)
 - **Size**: Recommended 1920x1080 pixels (16:9 aspect ratio) or larger
 - **File Naming**: Use descriptive names:
-  - `about-hero.jpg` - For the About page
   - `home-hero.jpg` - For the Home page
+  - `about-hero.jpg` - For the About page
+  - `gallery-hero.jpg` - For the Gallery page
   - `programs-hero.jpg` - For the Programs page
-  - etc.
+  - `get-involved-hero.jpg` - For the Get Involved page
+  - `news-hero.jpg` - For the News page
+  - `contact-hero.jpg` - For the Contact page
 
 ## Image Guidelines
 
@@ -24,6 +27,10 @@ Place hero section background images in this directory.
 - `home-hero.jpg` - For the Home page
 - `about-hero.jpg` - For the About page
 - `gallery-hero.jpg` - For the Gallery page
+- `programs-hero.jpg` - For the Programs page
+- `get-involved-hero.jpg` - For the Get Involved page
+- `news-hero.jpg` - For the News page
+- `contact-hero.jpg` - For the Contact page
 
 ## Usage
 
@@ -38,11 +45,13 @@ The HeroSection component automatically adds:
 public/
   images/
     hero/
-      about-hero.jpg
       home-hero.jpg
+      about-hero.jpg
       gallery-hero.jpg
-      programs-hero.jpg (optional)
-      contact-hero.jpg (optional)
+      programs-hero.jpg
+      get-involved-hero.jpg
+      news-hero.jpg
+      contact-hero.jpg
 ```
 
 ## Adding Hero Images to Pages

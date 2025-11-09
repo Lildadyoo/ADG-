@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 
 export default function Programs() {
@@ -56,15 +57,12 @@ export default function Programs() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Programs</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-            Comprehensive programs addressing education, health, and sustainable
-            development in communities across Uganda.
-          </p>
-        </div>
-      </Section>
+      <HeroSection
+        title="Our Programs"
+        subtitle="Comprehensive programs addressing education, health, and sustainable development in communities across Uganda."
+        backgroundImage="/images/hero/programs-hero.jpg"
+        overlay={true}
+      />
 
       {/* Programs List */}
       <Section className="bg-background">

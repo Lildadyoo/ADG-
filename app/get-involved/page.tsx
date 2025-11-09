@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 
 export default function GetInvolved() {
@@ -53,15 +54,12 @@ export default function GetInvolved() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Involved</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-            Join us in creating lasting change. Your support makes a difference
-            in communities across Uganda.
-          </p>
-        </div>
-      </Section>
+      <HeroSection
+        title="Get Involved"
+        subtitle="Join us in creating lasting change. Your support makes a difference in communities across Uganda."
+        backgroundImage="/images/hero/get-involved-hero.jpg"
+        overlay={true}
+      />
 
       {/* Ways to Get Involved */}
       <Section className="bg-background">

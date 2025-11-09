@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import HeroSection from "@/components/HeroSection";
 import NewsCard from "@/components/NewsCard";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
@@ -86,15 +87,12 @@ export default async function News() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">News & Updates</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-            Stay updated with our latest activities, impact stories, and
-            program updates.
-          </p>
-        </div>
-      </Section>
+      <HeroSection
+        title="News & Updates"
+        subtitle="Stay updated with our latest activities, impact stories, and program updates."
+        backgroundImage="/images/hero/news-hero.jpg"
+        overlay={true}
+      />
 
       {/* Featured Article */}
       <Section className="bg-background">
