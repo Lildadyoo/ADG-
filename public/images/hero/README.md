@@ -12,7 +12,8 @@ Place hero section background images in this directory.
   - `gallery-hero.jpg` - For the Gallery page
   - `programs-hero.jpg` - For the Programs page
   - `get-involved-hero.jpg` - For the Get Involved page
-  - `news-herssso.jpg` - For the News page
+  - `donate-hero.jpg` - For the Donate page
+  - `news-hero.jpg` - For the News page
   - `contact-hero.jpg` - For the Contact page
 
 ## Image Guidelines
@@ -29,6 +30,7 @@ Place hero section background images in this directory.
 - `gallery-hero.jpg` - For the Gallery page
 - `programs-hero.jpg` - For the Programs page
 - `get-involved-hero.jpg` - For the Get Involved page
+- `donate-hero.jpg` - For the Donate page
 - `news-hero.jpg` - For the News page
 - `contact-hero.jpg` - For the Contact page
 
@@ -50,6 +52,7 @@ public/
       gallery-hero.jpg
       programs-hero.jpg
       get-involved-hero.jpg
+      donate-hero.jpg
       news-hero.jpg
       contact-hero.jpg
 ```

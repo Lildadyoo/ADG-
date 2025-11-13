@@ -132,6 +132,23 @@ npm run dev
 
 2. Redeploy your application
 
+### Hostinger
+
+1. **Via hPanel**:
+   - Log in to Hostinger hPanel
+   - Go to your website → Environment Variables
+   - Add all required variables
+
+2. **Via File Manager**:
+   - Go to File Manager in hPanel
+   - Navigate to your site's root directory
+   - Create or edit `.env.production` file
+   - Add all environment variables
+
+3. **Restart your application** after adding variables
+
+See `HOSTINGER_SETUP.md` for detailed instructions.
+
 ### Other Platforms
 
 Add environment variables through your hosting platform's dashboard or configuration files.

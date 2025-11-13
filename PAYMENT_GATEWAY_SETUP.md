@@ -43,11 +43,13 @@ https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID
    NEXT_PUBLIC_PAYPAL_LINK=https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID
    ```
 
-2. **Vercel Production**: 
-   - Go to Vercel Dashboard → Your Project → Settings → Environment Variables
-   - Add: `NEXT_PUBLIC_PAYPAL_LINK` = `https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID`
-   - Select: Production, Preview, Development
-   - Redeploy
+2. **Production (Vercel or Hostinger)**: 
+   - **Vercel**: Go to Dashboard → Your Project → Settings → Environment Variables
+     - Add: `NEXT_PUBLIC_PAYPAL_LINK` = `https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID`
+     - Select: Production, Preview, Development
+     - Redeploy
+   - **Hostinger**: See `HOSTINGER_SETUP.md` for detailed instructions
+     - Add to `.env.production` file or via hPanel Environment Variables
 
 ### Step 5: Test
 - Visit your donation page
@@ -83,7 +85,9 @@ https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID
    NEXT_PUBLIC_STRIPE_LINK=https://buy.stripe.com/YOUR_LINK
    ```
 
-2. **Vercel Production**: Add `NEXT_PUBLIC_STRIPE_LINK` environment variable
+2. **Production (Vercel or Hostinger)**: Add `NEXT_PUBLIC_STRIPE_LINK` environment variable
+   - **Vercel**: Settings → Environment Variables
+   - **Hostinger**: See `HOSTINGER_SETUP.md` for instructions
 
 ### Step 4: Test
 - Use Stripe test mode first
@@ -117,7 +121,9 @@ https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID
    NEXT_PUBLIC_FLUTTERWAVE_LINK=https://flutterwave.com/pay/YOUR_LINK
    ```
 
-2. **Vercel Production**: Add `NEXT_PUBLIC_FLUTTERWAVE_LINK` environment variable
+2. **Production (Vercel or Hostinger)**: Add `NEXT_PUBLIC_FLUTTERWAVE_LINK` environment variable
+   - **Vercel**: Settings → Environment Variables
+   - **Hostinger**: See `HOSTINGER_SETUP.md` for instructions
 
 ### Step 4: Test
 - Flutterwave supports:
@@ -180,14 +186,14 @@ https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID
 - [ ] Add Flutterwave link to `.env.local`
 - [ ] Test PayPal donation
 - [ ] Test Flutterwave donation
-- [ ] Add environment variables to Vercel
+- [ ] Add environment variables to Vercel or Hostinger
 - [ ] Test in production
 
 ---
 
 ## Environment Variables Summary
 
-Add these to `.env.local` (local) and Vercel (production):
+Add these to `.env.local` (local) and your hosting platform (production):
 
 ```env
 # Payment Gateway Links
@@ -199,7 +205,8 @@ NEXT_PUBLIC_MOBILE_MONEY_LINK=https://your-mobile-money-link.com
 
 **Important**: 
 - Restart dev server after adding to `.env.local`
-- Redeploy on Vercel after adding environment variables
+- **Vercel**: Redeploy after adding environment variables
+- **Hostinger**: Restart your application after adding environment variables (see `HOSTINGER_SETUP.md`)
 
 ---
 
@@ -257,7 +264,7 @@ NEXT_PUBLIC_MOBILE_MONEY_LINK=https://your-mobile-money-link.com
 - Use environment variables for all payment links
 - Test in sandbox/test mode first
 - Monitor transactions regularly
-- Use HTTPS (automatic with Vercel)
+- Use HTTPS (automatic with Vercel, manual setup on Hostinger)
 
 ---
 

@@ -78,7 +78,7 @@ export default function Donate() {
       <HeroSection
         title="Make a Donation"
         subtitle="Your contribution helps us reach more communities, expand our programs, and create lasting change in Uganda."
-        backgroundImage="/images/hero/get-involved-hero.jpg"
+        backgroundImage="/images/hero/donate-hero.jpg"
         overlay={true}
       />
 
