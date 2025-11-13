@@ -20,35 +20,60 @@ export default function Donate() {
   const paymentMethods = [
     {
       name: "PayPal",
-      icon: "💳",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-10 h-10" fill="#0070BA">
+          <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.337 7.291-10.477 7.291H9.22a.64.64 0 0 0-.633.54l-1.512 6.87z"/>
+        </svg>
+      ),
       description: "Secure payment via PayPal",
       link: process.env.NEXT_PUBLIC_PAYPAL_LINK || "#",
       available: true,
     },
     {
       name: "Stripe",
-      icon: "💳",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-10 h-10" fill="#635BFF">
+          <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.467-5.851-6.591-7.305h.001z"/>
+        </svg>
+      ),
       description: "Credit/Debit card payment",
       link: process.env.NEXT_PUBLIC_STRIPE_LINK || "#",
       available: true,
     },
     {
       name: "Flutterwave",
-      icon: "🌍",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-10 h-10" fill="#F5A623">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169 0-.349.027-.534.086-1.646-2.11-4.446-3.5-7.534-3.5-4.97 0-9 4.03-9 9s4.03 9 9 9c3.088 0 5.888-1.39 7.534-3.5.185.059.365.086.534.086 1.381 0 2.5-1.119 2.5-2.5s-1.119-2.5-2.5-2.5zm-5.568 7.34c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
+        </svg>
+      ),
       description: "Pay with card, mobile money, or bank transfer",
       link: process.env.NEXT_PUBLIC_FLUTTERWAVE_LINK || "#",
       available: true,
     },
     {
       name: "Mobile Money",
-      icon: "📱",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none" stroke="#00A859" strokeWidth="2">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+          <path d="M9 6h6M9 10h6M9 14h3"/>
+        </svg>
+      ),
       description: "MTN Mobile Money or Airtel Money",
       link: process.env.NEXT_PUBLIC_MOBILE_MONEY_LINK || "#",
       available: true,
     },
     {
       name: "Bank Transfer",
-      icon: "🏦",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none" stroke="#1E40AF" strokeWidth="2">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+          <line x1="6" y1="8" x2="18" y2="8"/>
+          <line x1="6" y1="12" x2="18" y2="12"/>
+          <line x1="6" y1="16" x2="12" y2="16"/>
+        </svg>
+      ),
       description: "Direct bank transfer",
       link: "/contact?subject=donate",
       available: true,
@@ -211,7 +236,9 @@ export default function Donate() {
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">{method.icon}</span>
+                        <div className="flex-shrink-0">
+                          {method.icon}
+                        </div>
                         <div>
                           <div className="font-semibold text-gray-900">
                             {method.name}

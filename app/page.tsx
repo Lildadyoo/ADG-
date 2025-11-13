@@ -23,12 +23,6 @@ export default function Home() {
             Get Involved
           </Link>
           <Link
-            href="/donate"
-            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
-          >
-            💙 Donate Now
-          </Link>
-          <Link
             href="/programs"
             className="btn-secondary"
           >
