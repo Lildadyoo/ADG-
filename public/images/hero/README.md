@@ -12,7 +12,7 @@ Place hero section background images in this directory.
   - `gallery-hero.jpg` - For the Gallery page
   - `programs-hero.jpg` - For the Programs page
   - `get-involved-hero.jpg` - For the Get Involved page
-  - `news-hero.jpg` - For the News page
+  - `news-herssso.jpg` - For the News page
   - `contact-hero.jpg` - For the Contact page
 
 ## Image Guidelines

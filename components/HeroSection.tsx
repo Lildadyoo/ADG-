@@ -53,7 +53,7 @@ export default function HeroSection({
       {/* Content */}
       <div className="container-custom relative z-10">
         <div className="text-center py-16 md:py-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-100">
             {title}
           </h1>
           {subtitle && (
