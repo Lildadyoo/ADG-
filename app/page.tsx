@@ -23,6 +23,12 @@ export default function Home() {
             Get Involved
           </Link>
           <Link
+            href="/contact?subject=donate"
+            className="btn-secondary"
+          >
+            Donate Now
+          </Link>
+          <Link
             href="/programs"
             className="btn-secondary"
           >
@@ -173,6 +179,34 @@ export default function Home() {
               5+
             </div>
             <div className="text-gray-600">Years of Service</div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Donation Call to Action */}
+      <Section className="bg-primary text-white">
+        <div className="text-center py-12">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Support Our Mission
+            </h2>
+            <p className="text-xl mb-8 text-gray-100">
+              Your donation helps us reach more communities, expand our programs, and create lasting change in Uganda. Every contribution makes a difference.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact?subject=donate"
+                className="bg-white text-primary px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors inline-block"
+              >
+                Donate Now
+              </Link>
+              <Link
+                href="/get-involved"
+                className="bg-primary-light text-white px-8 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors inline-block border-2 border-white"
+              >
+                Learn More
+              </Link>
+            </div>
           </div>
         </div>
       </Section>
