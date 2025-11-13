@@ -17,18 +17,30 @@ export default function ProjectProposalSection() {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // In a real app, this would send the form data to a server
-    console.log("Project proposal submitted:", formData);
-    
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/proposals', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit proposal');
+      }
+
+      // Success
       setSubmitted(true);
-      setIsSubmitting(false);
       setFormData({
         projectTitle: "",
         organization: "",
@@ -44,7 +56,12 @@ export default function ProjectProposalSection() {
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
-    }, 1000);
+    } catch (err) {
+      console.error('Error submitting proposal:', err);
+      setError(err instanceof Error ? err.message : 'An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -74,6 +91,12 @@ export default function ProjectProposalSection() {
 
         <div className="max-w-4xl mx-auto">
           <div className="card">
+            {error && (
+              <div className="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl">
+                <p className="font-semibold">Error submitting proposal:</p>
+                <p>{error}</p>
+              </div>
+            )}
             {submitted ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
