@@ -192,19 +192,19 @@ export default function About() {
             {
               name: "Nanduga Mastula",
               role: "Finance and Operations",
-              bio: "Manages health initiatives and community health worker programs.",
+              bio: "Ensuring financial accountability and efficient operations for social change.",
               image: "/images/team/nanduga-mastula.jpg",
             },
             {
               name: "Joweria Muwanga",
               role: "Community Outreach Manager (councilor)",
-              bio: "Leads educational programs and teacher training initiatives across communities.",
+              bio: "Engaging stakeholders for social change and community development",
               image: "/images/team/joweria-muwanga.jpg",
             },
             {
               name: "Uwireza Gaelle",
               role: "Civil Engineer",
-              bio: "Builds relationships with local communities and coordinates volunteer activities.",
+              bio: "Creating solutions for safe and efficient structures.",
               image: "/images/team/gaelle.jpg",
             },
           ].map((member, index) => (
