@@ -37,7 +37,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -47,6 +47,12 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/donate"
+              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 py-2 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+            >
+              💙 Donate
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,6 +93,13 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href="/donate"
+                className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg font-semibold text-center mt-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                💙 Donate
+              </Link>
             </div>
           </div>
         )}

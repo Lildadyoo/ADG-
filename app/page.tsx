@@ -23,10 +23,10 @@ export default function Home() {
             Get Involved
           </Link>
           <Link
-            href="/contact?subject=donate"
-            className="btn-secondary"
+            href="/donate"
+            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
           >
-            Donate Now
+            💙 Donate Now
           </Link>
           <Link
             href="/programs"
@@ -195,10 +195,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact?subject=donate"
-                className="bg-white text-primary px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors inline-block"
+                href="/donate"
+                className="bg-white text-primary px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl inline-block transform hover:scale-105"
               >
-                Donate Now
+                💙 Donate Now
               </Link>
               <Link
                 href="/get-involved"
