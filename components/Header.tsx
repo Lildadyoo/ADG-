@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Header() {
@@ -21,9 +22,16 @@ export default function Header() {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-primary">ADG</div>
-            <span className="hidden md:block text-sm text-gray-600">
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <Image
+              src="/images/logo/logo.png"
+              alt="ADG Logo"
+              width={120}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+            <span className="hidden md:block text-sm text-gray-600 font-medium">
               Action for Development Group
             </span>
           </Link>
