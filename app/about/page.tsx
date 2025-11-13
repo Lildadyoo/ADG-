@@ -195,6 +195,18 @@ export default function About() {
               bio: "Manages health initiatives and community health worker programs.",
               image: "/images/team/nanduga-mastula.jpg",
             },
+            {
+              name: "Joweria Muwanga",
+              role: "Education Coordinator",
+              bio: "Leads educational programs and teacher training initiatives across communities.",
+              image: "/images/team/joweria-muwanga.jpg",
+            },
+            {
+              name: "Gaelle",
+              role: "Community Outreach Manager",
+              bio: "Builds relationships with local communities and coordinates volunteer activities.",
+              image: "/images/team/gaelle.jpg",
+            },
           ].map((member, index) => (
             <div key={index} className="card text-center">
               <div className="mx-auto mb-4 flex justify-center">

@@ -10,6 +10,8 @@ Place team member photos in this directory.
   - `mpeke-isima.jpg`
   - `nanteza-salima.jpg`
   - `nanduga-mastula.jpg`
+  - `joweria-muwanga.jpg`
+  - `gaelle.jpg`
 
 ## Adding New Team Members
 
@@ -31,5 +33,7 @@ public/
       mpeke-isima.jpg
       nanteza-salima.jpg
       nanduga-mastula.jpg
+      joweria-muwanga.jpg
+      gaelle.jpg
 ```
 
