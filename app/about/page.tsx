@@ -178,32 +178,32 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              name: "Mpeke Isima",
-              role: "Executive Director",
+              name: "Eng Mpeke Isima",
+              role: "Executive Director (environmental engineer)",
               bio: "Leading ADG with 10+ years of experience in community development.",
               image: "/images/team/mpeke-isima.jpg",
             },
             {
               name: "Nanteza Salima",
-              role: "Program Director",
+              role: "Program Coordinator (Teacher)",
               bio: "Oversees all program implementation and community partnerships.",
               image: "/images/team/nanteza-salima.jpg",
             },
             {
               name: "Nanduga Mastula",
-              role: "Health Coordinator",
+              role: "Finance and Operations",
               bio: "Manages health initiatives and community health worker programs.",
               image: "/images/team/nanduga-mastula.jpg",
             },
             {
               name: "Joweria Muwanga",
-              role: "Education Coordinator",
+              role: "Community Outreach Manager (councilor)",
               bio: "Leads educational programs and teacher training initiatives across communities.",
               image: "/images/team/joweria-muwanga.jpg",
             },
             {
-              name: "Gaelle",
-              role: "Community Outreach Manager",
+              name: "Uwireza Gaelle",
+              role: "Civil Engineer",
               bio: "Builds relationships with local communities and coordinates volunteer activities.",
               image: "/images/team/gaelle.jpg",
             },
