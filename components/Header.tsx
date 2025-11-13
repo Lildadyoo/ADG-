@@ -26,9 +26,9 @@ export default function Header() {
             <Image
               src="/images/logo/logo.png"
               alt="ADG Logo"
-              width={120}
-              height={40}
-              className="h-10 w-auto object-contain"
+              width={180}
+              height={60}
+              className="h-12 md:h-16 w-auto object-contain"
               priority
             />
             <span className="hidden md:block text-sm text-gray-600 font-medium">
