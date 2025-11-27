@@ -70,7 +70,7 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Action for Development Group. All rights reserved.</p>
           <p className="mt-4 text-sm">
             Built with <span className="text-red-400">♥</span> by{" "}
-            <span className="font-semibold text-white">Dev Gada</span>
+            <span className="font-semibold text-white">Dev Jordan</span>
           </p>
         </div>
       </div>
