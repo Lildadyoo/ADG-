@@ -191,7 +191,7 @@ export default function About() {
             },
             {
               name: "Nanduga Mastula",
-              role: "Finance and Operations",
+              role: "Finance and Operations (Accountant)",
               bio: "Ensuring financial accountability and efficient operations for social change.",
               image: "/images/team/nanduga-mastula.jpg",
             },
