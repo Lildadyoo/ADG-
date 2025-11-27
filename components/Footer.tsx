@@ -59,8 +59,8 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-300">
               <li>Kampala, Uganda</li>
-              <li>Email: info@adg.org</li>
-              <li>Phone: +256 XXX XXX XXX</li>
+              <li>Email: info@adguganda.org</li>
+              <li>Phone: +256 701 906 524</li>
             </ul>
           </div>
         </div>

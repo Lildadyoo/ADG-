@@ -165,7 +165,7 @@ export default function Contact() {
                   <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                   <p className="text-gray-600">
                     <a
-                      href="tel:+256XXXXXXXXX"
+                      href="tel:+256701906524"
                       className="hover:text-primary transition-colors"
                     >
                       +256 XXX XXX XXX
